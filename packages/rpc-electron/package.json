@@ -1,0 +1,36 @@
+{
+  "name": "@yuankui/rpc-electron",
+  "version": "0.1.0",
+  "description": "Electron adapter for @yuankui/rpc",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist --target node --declaration",
+    "dev": "bun build ./src/index.ts --outdir ./dist --target node --watch --declaration",
+    "test": "bun test",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [
+    "rpc",
+    "electron",
+    "typescript",
+    "type-safe",
+    "api"
+  ],
+  "author": "yuankui",
+  "license": "MIT",
+  "dependencies": {
+    "@yuankui/rpc": "*"
+  },
+  "peerDependencies": {
+    "electron": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  }
+}

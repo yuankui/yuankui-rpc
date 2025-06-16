@@ -1,0 +1,32 @@
+{
+  "name": "@yuankui/rpc",
+  "version": "0.1.0",
+  "description": "Type-safe RPC framework",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist --target node",
+    "dev": "bun build ./src/index.ts --outdir ./dist --target node --watch",
+    "test": "bun test",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [
+    "rpc",
+    "typescript",
+    "type-safe",
+    "api"
+  ],
+  "author": "yuankui",
+  "license": "MIT",
+  "dependencies": {
+    "superjson": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  }
+}

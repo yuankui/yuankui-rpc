@@ -1,0 +1,26 @@
+{
+  "name": "@yuankui/rpc",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "bun run --cwd packages/rpc build && bun run --cwd packages/rpc-electron build && bun run --cwd packages/rpc-nextjs build",
+    "dev": "bun run --cwd packages/rpc dev & bun run --cwd packages/rpc-electron dev & bun run --cwd packages/rpc-nextjs dev",
+    "test": "bun test",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  }
+}
