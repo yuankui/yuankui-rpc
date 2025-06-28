@@ -4,6 +4,15 @@
   "description": "Electron adapter for @yuankui/rpc",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "homepage": "https://github.com/yuankui/yuankui-rpc/tree/main/packages/rpc-electron",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuankui/yuankui-rpc.git"
+  },
   "scripts": {
     "build": "bun build ./src/index.ts --outdir ./dist --target node --declaration",
     "dev": "bun build ./src/index.ts --outdir ./dist --target node --watch --declaration",
