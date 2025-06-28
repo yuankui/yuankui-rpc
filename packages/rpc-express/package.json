@@ -1,6 +1,6 @@
 {
   "name": "@yuankui/rpc-express",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Express integration for @yuankui/rpc",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,7 +30,7 @@
   "author": "yuankui",
   "license": "MIT",
   "dependencies": {
-    "@yuankui/rpc": "workspace:*",
+    "@yuankui/rpc": "*",
     "express": "^4.18.0"
   },
   "devDependencies": {

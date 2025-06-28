@@ -1,6 +1,6 @@
 {
   "name": "@yuankui/rpc-electron",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Electron adapter for @yuankui/rpc",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
