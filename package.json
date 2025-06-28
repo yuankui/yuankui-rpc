@@ -8,7 +8,7 @@
   "scripts": {
     "build": "bun run --cwd packages/rpc build && bun run --cwd packages/rpc-electron build && bun run --cwd packages/rpc-nextjs build && bun run --cwd packages/rpc-express build",
     "dev": "bun run --cwd packages/rpc dev & bun run --cwd packages/rpc-electron dev & bun run --cwd packages/rpc-nextjs dev & bun run --cwd packages/rpc-express dev",
-    "test": "bun test",
+    "test": "vitest",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "version:major": "bun run ./update-version.js major",
@@ -22,7 +22,8 @@
     "@typescript-eslint/parser": "^7.1.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "vitest": "^1.0.0"
   },
   "engines": {
     "bun": ">=1.0.0"

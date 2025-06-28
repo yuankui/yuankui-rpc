@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'bun:test';
+import { describe, it, expect, beforeEach } from 'vitest';
 import express, { Express } from 'express';
 import request from 'supertest';
 import { createRPCRouter, ExpressRPCHandler } from './index';
