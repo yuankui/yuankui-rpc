@@ -10,7 +10,11 @@
     "dev": "bun run --cwd packages/rpc dev & bun run --cwd packages/rpc-electron dev & bun run --cwd packages/rpc-nextjs dev",
     "test": "bun test",
     "lint": "eslint . --ext .ts,.tsx",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}"",
+    "version:major": "bun run ./update-version.js major",
+    "version:minor": "bun run ./update-version.js minor",
+    "version:patch": "bun run ./update-version.js patch",
+    "release": "bun run ./release.js"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
