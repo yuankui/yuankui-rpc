@@ -1,4 +1,5 @@
 import superjson from 'superjson';
+import { RPCResponse } from './handler';
 
 export type RPCEndpoint = {
   [key: string]: (...args: any[]) => Promise<any>;
@@ -61,8 +62,11 @@ export class RPCClient<T extends RPCEndpoint> {
         throw new Error(`RPC call failed: ${response.statusText}`);
       }
 
-      const result = await response.json();
-      return this.config.serializer!.deserialize(result);
+      const result = (await response.json()) as RPCResponse;
+      if (result.error) {
+        throw new Error(result.error.message);
+      }
+      return this.config.serializer!.deserialize(result.data);
     } catch (error) {
       if (error instanceof Error) {
         if (error.name === 'AbortError') {

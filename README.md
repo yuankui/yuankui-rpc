@@ -7,7 +7,6 @@ A type-safe RPC (Remote Procedure Call) framework for TypeScript, designed for b
 - **Type-Safe**: End-to-end type safety for your API calls.
 - **`superjson` Integration**: Natively supports complex data types like `Date`, `Map`, `Set`, etc.
 - **Environment Agnostic**: Core package works in any Node.js environment.
-- **Adapters**: Official adapters for Electron and Next.js.
 - **Lightweight**: Minimal dependencies and a small footprint.
 
 ## Packages
@@ -17,8 +16,7 @@ This is a monorepo containing the following packages:
 | Package                  | Description                               |
 | ------------------------ | ----------------------------------------- |
 | `@yuankui/rpc`           | Core RPC framework                        |
-| `@yuankui/rpc-electron`  | Adapter for Electron applications         |
-| `@yuankui/rpc-nextjs`    | Adapter for Next.js applications          |
+
 
 ## Installation
 
@@ -26,8 +24,6 @@ Install the desired packages using your favorite package manager:
 
 ```bash
 bun add @yuankui/rpc
-bun add @yuankui/rpc-electron # For Electron
-bun add @yuankui/rpc-nextjs   # For Next.js
 ```
 
 ## Usage
@@ -91,93 +87,6 @@ async function main() {
 }
 
 main();
-```
-
-### Electron (`@yuankui/rpc-electron`)
-
-This package simplifies RPC in Electron applications.
-
-**1. Main Process (Handler)**
-
-In your main process, create a handler.
-
-```typescript
-// main.ts
-import { app, BrowserWindow } from 'electron';
-import { createElectronRPCHandler } from '@yuankui/rpc-electron';
-import { API } from './shared/api';
-
-const apiImpl: API = {
-  add: async (a, b) => a + b,
-  getUser: async (id) => ({ id, name: `User ${id}` }),
-};
-
-createElectronRPCHandler({ endpoints: apiImpl });
-
-// Your Electron app setup...
-```
-
-**2. Renderer Process (Client)**
-
-In your renderer process, create a client.
-
-```typescript
-// renderer.ts
-import { ElectronRPCClient } from '@yuankui/rpc-electron';
-import { API } from './shared/api';
-
-const client = new ElectronRPCClient<API>();
-
-async function main() {
-  const sum = await client.call('add', 5, 10);
-  console.log(sum); // 15
-}
-
-main();
-```
-
-### Next.js (`@yuankui/rpc-nextjs`)
-
-This package provides a Next.js API route handler.
-
-**1. API Route (Handler)**
-
-Create an API route to handle RPC calls.
-
-```typescript
-// pages/api/rpc.ts
-import { createNextRPCHandler } from '@yuankui/rpc-nextjs';
-import { API } from '../../shared/api';
-
-const apiImpl: API = {
-  add: async (a, b) => a + b,
-  getUser: async (id) => ({ id, name: `User ${id}` }),
-};
-
-export default createNextRPCHandler({ endpoints: apiImpl });
-```
-
-**2. Client Component (Client)**
-
-In your client-side code, create a client.
-
-```typescript
-// components/MyComponent.tsx
-import { NextRPCClient } from '@yuankui/rpc-nextjs';
-import { API } from '../shared/api';
-import { useEffect, useState } from 'react';
-
-const client = new NextRPCClient<API>();
-
-export default function MyComponent() {
-  const [user, setUser] = useState<{ id: string; name: string } | null>(null);
-
-  useEffect(() => {
-    client.call('getUser', '1').then(setUser);
-  }, []);
-
-  return <div>{user ? `Hello, ${user.name}` : 'Loading...'}</div>;
-}
 ```
 
 ## API Reference

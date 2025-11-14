@@ -1,4 +1,5 @@
 import { RPCEndpoint } from './client';
+import superjson from 'superjson';
 
 export interface RPCHandlerConfig {
   endpoints: RPCEndpoint;
@@ -24,8 +25,8 @@ export interface RPCResponse {
 export class RPCHandler {
   protected config: RPCHandlerConfig;
   private defaultSerializer = {
-    serialize: (data: any) => data,
-    deserialize: (data: any) => data,
+    serialize: superjson.serialize,
+    deserialize: superjson.deserialize,
   };
 
   constructor(config: RPCHandlerConfig) {
@@ -35,7 +36,7 @@ export class RPCHandler {
     };
   }
 
-  protected async handleRequest(request: RPCRequest): Promise<RPCResponse> {
+  async handleRequest(request: RPCRequest): Promise<RPCResponse> {
     try {
       const { endpoint, params } = request;
       const handler = this.config.endpoints[endpoint];
@@ -56,8 +57,7 @@ export class RPCHandler {
     } catch (error) {
       return {
         error: {
-          message:
-            error instanceof Error ? error.message : 'Unknown error occurred',
+          message: error instanceof Error ? error.message : 'Unknown error occurred',
           code: 'INTERNAL_ERROR',
         },
       };
